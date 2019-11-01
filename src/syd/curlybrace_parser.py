@@ -1,9 +1,9 @@
 import re
 import enum
-import pprint
-from synamic.core.standalones.functions.date_time import DtPatterns, parse_date, parse_time, parse_datetime
-from synamic.core.standalones.syd import SydDataType, SydData, SydContainer
-from synamic.exceptions import SynamicSydParseError, get_source_snippet_from_text
+from syd.datatypes.date_time import DtPatterns, parse_date, parse_time, parse_datetime
+from syd.datatypes.syd_data import SydDataType, SydData, SydContainer
+from syd.exceptions import SynamicSydParseError
+from syd.utils import get_source_snippet_from_text
 
 
 # patterns
