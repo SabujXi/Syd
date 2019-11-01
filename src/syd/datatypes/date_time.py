@@ -11,7 +11,7 @@
 
 import re
 import datetime
-from synamic.exceptions import SynamicInvalidDateTimeFormat
+from syd.exceptions import SynamicInvalidDateTimeFormat
 
 
 _datetime_pattern = re.compile(r"^\s*(?P<year>\d{4})-(?P<month>\d{1,2})-(?P<date>\d{1,2})\s*(\s+"

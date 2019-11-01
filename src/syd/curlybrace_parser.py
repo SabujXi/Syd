@@ -5,6 +5,8 @@ from syd.datatypes.syd_data import SydDataType, SydData, SydContainer
 from syd.exceptions import SynamicSydParseError
 from syd.utils import get_source_snippet_from_text
 
+# TODO: add inline mode too.
+
 
 # patterns
 class _Patterns:
