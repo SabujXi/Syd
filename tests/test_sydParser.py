@@ -60,9 +60,17 @@ class TestSydParser(TestCase):
         self.assertEqual("m", tree["key1.key_n1.l"])
         self.assertEqual("; l:9;", tree["key1.key_n1.o.p"])
         # multi line list
-        # self.assertEqual("my name", tree["list_ml.0"])
-
-
+        self.assertEqual("my name", tree["list_ml.0"])
+        self.assertEqual("yes", tree["list_ml.1"])
+        self.assertEqual("ali", tree["list_ml.2"])
+        self.assertEqual("v", tree["list_ml.3.k"])
+        self.assertEqual(("1", "7'"), tree["list_ml.4"])
+        self.assertEqual("1", tree["list_ml.4.0"])
+        self.assertEqual((7, 8), tree["list_ml.5"])
+        self.assertEqual("JJJ Hye", tree["list_ml.6"])
+        # -> bug here -<
+        # multi line string inside multi line list
+        self.assertEqual("ml string in list\n    got it?", tree["list_ml.7"])
 
     # def test_convert_to_scalar_values(self):
     #     self.fail()
