@@ -8,9 +8,9 @@ str1qu: 'single quoted string'
 num: 5.4
 list: (uj, 87   ,     ll)
 
-    listn: ((8\, 7))
+#    listn: ((8\, 7))
 a : {
-    what are you doing
+    key value is this part
 }
 ml ~ {
     my
@@ -26,7 +26,7 @@ key1{
     }
 }
 
-lis1[#
+list_ml[#
 my name
 
     yes
@@ -42,6 +42,3 @@ my name
         got it?
     }
 ]
-lis1{
-    k m
-}

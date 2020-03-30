@@ -265,8 +265,8 @@ class SydContainer(_SydData):
         key = int(key) if type(key) is str and key.isdigit() else key
 
         if type(key) is int:
-            assert not self.is_list, \
-                f"Index {key} provided for a block collection. Use numeric index only for list collections"
+            assert self.is_list, \
+                f"Index {key} provided for a block collection. Use numeric index only for list collections {self.is_list}"
             try:
                 d = self.__data_list[key]
                 if multi:
