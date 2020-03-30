@@ -561,12 +561,12 @@ class SydContainer(_SydData):
                 assert value is not None
                 self.__converted_value = value
             else:
-                # value = self.value_origin
-                value = self
-                # if self.is_list:
-                #     value = self.as_tuple
-                # else:
-                #     value = self.as_dict
+                value = self.value_origin
+                # value = self
+                if self.is_list:
+                    value = self.as_tuple
+                else:
+                    value = self.as_dict
         return value
 
     @property

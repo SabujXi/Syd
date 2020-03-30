@@ -1,0 +1,47 @@
+m_in t
+k : v
+m : n
+ikndf /lj
+key2: key2data
+str2qu: "double quoted string"
+str1qu: 'single quoted string'
+num: 5.4
+list: (uj, 87   ,     ll)
+
+    listn: ((8\, 7))
+a : {
+    what are you doing
+}
+ml ~ {
+    my
+     text
+}
+key1{
+    key_n1 : {
+        k: 1
+        l m
+        o {
+            p ; l:9;
+        }
+    }
+}
+
+lis1[#
+my name
+
+    yes
+    ali
+    {
+        k: v
+    }
+    ("l" ,           7')
+    (    7,   8)
+    "JJJ Hye"
+    ~{
+    ml srting in list
+        got it?
+    }
+]
+lis1{
+    k m
+}
