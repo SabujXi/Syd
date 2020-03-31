@@ -14,7 +14,7 @@ class TestSydParserReadOps(TestCase):
             cls.text = f.read()
         with open(join(BASE_DIR, "data/test_text-2.txt"), encoding="utf-8") as f:
             cls.text2 = f.read()
-        s = SydParser(cls.text, debug=False)
+        s = SydParser(cls.text, debug=True)
         s2 = SydParser(cls.text2, debug=False)
         cls.tree = s.parse()
         cls.tree2 = s2.parse()

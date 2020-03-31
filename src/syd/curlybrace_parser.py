@@ -20,6 +20,13 @@ class _Patterns:
             :? # colon is optional
             (?={|\[|\s|\Z)
             ''', re.X)
+    is_multiline_pattern = re.compile(r'''^
+        [ \t]*
+        (?P<is_multiline>~{1,3})? # is multi line
+        [ \t]*
+        :? # colon is optional
+        (?={|\[|\s|\Z)
+        ''', re.X)
 
     number = re.compile(r'^[ \t]*(?P<number>[+-]?[0-9]+(\.[0-9]+)?)[ \t]*$')
     date = DtPatterns.date
@@ -158,22 +165,19 @@ class SydParser:
     def __process_block_items(self):  # (1)
         line = self.__lines[self.__current_line_no - 1]
         #  text = line
+
         #  extract key
-        if self.__current_state in (_ParseState.processing_list, _ParseState.processing_block_string):
-            key = None
-            end_pos = 0
-            is_multiline = False
-            multiline_token = None
-        else:
+        key = None
+        end_pos = 0
+        is_multiline = False
+        multiline_token = None
+        if self.__current_state not in (_ParseState.processing_list, _ParseState.processing_block_string):
             key_match = _Patterns.key_pattern.match(line)
             if key_match:
                 key = key_match.group('key')
-                end_pos = key_match.end()
                 multiline_token = key_match.group('is_multiline')
-                if multiline_token:
-                    is_multiline = True
-                else:
-                    is_multiline = False
+                is_multiline = bool(multiline_token)
+                end_pos = key_match.end()
             else:
                 self.__dprint("error in line: %s" % line)
                 err = SynamicSydParseError(
@@ -181,6 +185,12 @@ class SydParser:
                     f'Details:\n{get_source_snippet_from_text(self.__text, self.__current_line_no, limit=10)}'
                 )
                 raise err
+        else:
+            multiline_match = _Patterns.is_multiline_pattern.match(line, end_pos)
+            if multiline_match:
+                multiline_token = multiline_match.group('is_multiline')
+                is_multiline = bool(multiline_token)
+                end_pos = multiline_match.end()
 
         # self.__dprint("\nKEY: %s" % str(key))
         # self.__dprint("\nLINE END: %s" % line[end_pos:])
